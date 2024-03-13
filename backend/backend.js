@@ -25,7 +25,9 @@ const pusher = new Pusher({
 
 const server = app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 
-const whitelist = process.env.ORIGIN.split(' ');
+//const whitelist = process.env.ORIGIN.split(' ');
+const origin = process.env.ORIGIN || '';
+const whitelist = origin.split(' ');
 const corsOptions = {
   origin(origin, callback) {
     if (!origin || whitelist.indexOf(new URL(origin).hostname) !== -1) {
